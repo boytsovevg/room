@@ -8,7 +8,11 @@
             <steam-games></steam-games>
         </div>
         <div class="room__element">
-            <steam-players></steam-players>
+            <steam-players
+                [players]="players$ | async"
+                (playerDelete)="handlePlayerDelete($event)"
+            >
+            </steam-players>
         </div>
     </main>
 </div>
