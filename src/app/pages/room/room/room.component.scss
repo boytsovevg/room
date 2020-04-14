@@ -1,0 +1,22 @@
+.room {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.room__header {
+}
+
+.room__content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.room__element {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid;
+}
+
+
+

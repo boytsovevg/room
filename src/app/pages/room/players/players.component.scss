@@ -1,0 +1,48 @@
+.players {
+  width: 100%;
+  min-height: 400px;
+}
+
+.players-list {
+  list-style: none;
+  margin-top: 30px;
+  padding: 0;
+
+  &__item {
+    padding: 10px;
+    border: 1px solid;
+    margin-top: 5px;
+    margin-left: 0;
+    max-width: 300px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+.player {
+  display: flex;
+  align-items: center;
+
+  &__avatar {
+    border-radius: 50%;
+    border: 1px solid;
+    width: 50px;
+    height: 50px;
+  }
+
+  &__description {
+    margin-left: 10px;
+
+    & > h1 {
+      font-size: 20px;
+    }
+  }
+}
+
+.games-count {
+  &__number {
+    margin-left: 5px;
+  }
+}
