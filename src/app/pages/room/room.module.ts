@@ -1,19 +1,36 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RoomComponent } from './room/room.component';
-import { GamesComponent } from './games/games.component';
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
+
 import { ChosenGameComponent } from './chosen-game/chosen-game.component';
+import { GamesComponent } from './games/games.component';
+import { PlayersDataService } from './players/players-data.service';
 import { PlayersComponent } from './players/players.component';
+import { RoomComponent } from './room/room.component';
 
 @NgModule({
     imports: [
-        CommonModule
+        CommonModule,
+        MatListModule,
+        MatIconModule,
+        MatAutocompleteModule,
+        MatFormFieldModule,
+        ReactiveFormsModule,
+        MatInputModule
     ],
     declarations: [
         RoomComponent,
         GamesComponent,
         ChosenGameComponent,
         PlayersComponent
+    ],
+    providers: [
+        PlayersDataService
     ],
     exports: [
         RoomComponent

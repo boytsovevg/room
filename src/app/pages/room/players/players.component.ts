@@ -1,5 +1,11 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { PlayerModel } from './model/player.model';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+
+import { PlayerPreviewModel } from './models/player-preview.model';
+import { PlayerModel } from './models/player.model';
+import { PlayersDataService } from './players-data.service';
 
 @Component({
     selector: 'steam-players',
@@ -9,16 +15,21 @@ import { PlayerModel } from './model/player.model';
 })
 export class PlayersComponent implements OnInit {
 
-    @Input() players: PlayerModel[];
-    @Output() playerDelete = new EventEmitter<string>();
+    public searchedPlayers$: Observable<PlayerPreviewModel[]>;
+    public players$: Observable<PlayerModel[]>;
 
-    constructor() {
+    public searchPlayersInput = new FormControl();
+
+    constructor(
+        private playersDataService: PlayersDataService
+    ) {
+        this.searchedPlayers$ = this.searchPlayersInput.valueChanges.pipe(
+            switchMap(searchTerm => this.playersDataService.searchPlayers(searchTerm))
+        );
+
+        this.players$ = this.playersDataService.getPlayers();
     }
 
-    ngOnInit(): void {
-    }
-
-    public deletePlayer(id: string): void {
-        this.playerDelete.emit(id);
+    public ngOnInit(): void {
     }
 }
