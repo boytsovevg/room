@@ -9,7 +9,7 @@ import { MatListModule } from '@angular/material/list';
 
 import { ChosenGameComponent } from './chosen-game/chosen-game.component';
 import { GamesComponent } from './games/games.component';
-import { PlayersDataService } from './players/players-data.service';
+import { PlayersDataService } from './players-data.service';
 import { PlayersComponent } from './players/players.component';
 import { RoomComponent } from './room/room.component';
 import { MatButtonModule } from '@angular/material/button';

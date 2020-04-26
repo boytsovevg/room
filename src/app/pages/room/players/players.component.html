@@ -14,10 +14,13 @@
             >
         </mat-form-field>
 
-        <mat-autocomplete #playersSearch="matAutocomplete">
+        <mat-autocomplete
+            #playersSearch="matAutocomplete"
+            (optionSelected)="handleSearchedPlayerSelect($event)"
+        >
             <mat-option
-                *ngFor="let player of searchedPlayers$ | async"
-                [value]="player.nickname"
+                *ngFor="let player of searchedPlayers"
+                [value]="player"
             >
                 {{player.nickname}}
             </mat-option>
@@ -25,7 +28,7 @@
     </div>
     <mat-list>
         <mat-list-item
-            *ngFor="let player of players$ | async"
+            *ngFor="let player of players"
             class="player"
         >
             <img

@@ -1,11 +1,18 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    Input,
+    OnDestroy,
+    Output,
+} from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { Subject } from 'rxjs';
+import { filter, takeUntil } from 'rxjs/operators';
 
 import { PlayerPreviewModel } from './models/player-preview.model';
 import { PlayerModel } from './models/player.model';
-import { PlayersDataService } from './players-data.service';
 
 @Component({
     selector: 'steam-players',
@@ -13,25 +20,43 @@ import { PlayersDataService } from './players-data.service';
     styleUrls: ['./players.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PlayersComponent implements OnInit {
+export class PlayersComponent implements OnDestroy {
 
-    public searchedPlayers$: Observable<PlayerPreviewModel[]>;
-    public players$: Observable<PlayerModel[]>;
+    @Input() public players: PlayerModel[];
+    @Input() public searchedPlayers: PlayerPreviewModel[];
+
+    @Output() public playerSearchTextChange = new EventEmitter<string>();
+    @Output() public searchedPlayerSelect = new EventEmitter<PlayerPreviewModel>();
+
+    @Output() public playerDelete = new EventEmitter<string>();
 
     public searchPlayersInput = new FormControl();
 
-    constructor(
-        private playersDataService: PlayersDataService
-    ) {
-        this.searchedPlayers$ = this.searchPlayersInput.valueChanges.pipe(
-            switchMap(searchTerm => this.playersDataService.searchPlayers(searchTerm))
-        );
+    private destroy$ = new Subject<void>();
 
-        this.players$ = this.playersDataService.getPlayers();
+    constructor() {
+        this.searchPlayersInput.valueChanges.pipe(
+            filter(term => !!term),
+            takeUntil(this.destroy$)
+        )
+            .subscribe(term => {
+                if (typeof term === 'string') {
+                    this.playerSearchTextChange.emit(term);
+                }
+            });
     }
 
-    public ngOnInit(): void {
+    public ngOnDestroy(): void {
+        this.destroy$.next();
+        this.destroy$.complete();
     }
 
-    public deletePlayer(id: string): void {}
+    public deletePlayer(id: string): void {
+        this.playerDelete.emit(id);
+    }
+
+    public handleSearchedPlayerSelect(event: MatAutocompleteSelectedEvent): void {
+        this.searchedPlayerSelect.emit(event.option.value);
+        this.searchPlayersInput.setValue(null);
+    }
 }

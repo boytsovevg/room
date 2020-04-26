@@ -8,7 +8,13 @@
             <steam-games></steam-games>
         </div>
         <div class="room__element">
-            <steam-players>
+            <steam-players
+                [players]="players"
+                [searchedPlayers]="searchedPlayers"
+                (playerSearchTextChange)="searchPlayers($event)"
+                (playerDelete)="deletePlayer($event)"
+                (searchedPlayerSelect)="handleSearchPlayerSelect($event)"
+            >
             </steam-players>
         </div>
     </main>
