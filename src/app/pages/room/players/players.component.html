@@ -10,11 +10,11 @@
                 type="text"
                 matInput
                 [formControl]="searchPlayersInput"
-                [matAutocomplete]="auto"
+                [matAutocomplete]="playersSearch"
             >
         </mat-form-field>
 
-        <mat-autocomplete #auto="matAutocomplete">
+        <mat-autocomplete #playersSearch="matAutocomplete">
             <mat-option
                 *ngFor="let player of searchedPlayers$ | async"
                 [value]="player.nickname"
@@ -23,14 +23,28 @@
             </mat-option>
         </mat-autocomplete>
     </div>
-    <mat-list class="players-list">
-        <mat-list-item *ngFor="let player of players$ | async">
+    <mat-list>
+        <mat-list-item
+            *ngFor="let player of players$ | async"
+            class="player"
+        >
             <img
                 matListAvatar
                 [src]="player.avatarUrl"
                 alt="avatar"
             >
-            <div matLine>{{player.nickname}}</div>
+            <div matLine class="player__description">
+                <div class="player__nickname">{{player.nickname}}</div>
+                <div class="games-count">
+                    games: {{player.gamesCount}}
+                </div>
+            </div>
+
+            <div matline>
+                <button mat-icon-button (click)="deletePlayer(player.id)">
+                    <mat-icon matListIcon>close</mat-icon>
+                </button>
+            </div>
         </mat-list-item>
     </mat-list>
 </div>

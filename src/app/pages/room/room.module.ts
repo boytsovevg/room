@@ -12,6 +12,7 @@ import { GamesComponent } from './games/games.component';
 import { PlayersDataService } from './players/players-data.service';
 import { PlayersComponent } from './players/players.component';
 import { RoomComponent } from './room/room.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
     imports: [
@@ -21,7 +22,8 @@ import { RoomComponent } from './room/room.component';
         MatAutocompleteModule,
         MatFormFieldModule,
         ReactiveFormsModule,
-        MatInputModule
+        MatInputModule,
+        MatButtonModule
     ],
     declarations: [
         RoomComponent,

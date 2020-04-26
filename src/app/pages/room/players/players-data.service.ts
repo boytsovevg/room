@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
-import { PlayerDto } from './dto/player.dto';
 import { PlayerPreviewDto } from './dto/player-preview.dto';
+import { PlayerDto } from './dto/player.dto';
 
 @Injectable()
 export class PlayersDataService {

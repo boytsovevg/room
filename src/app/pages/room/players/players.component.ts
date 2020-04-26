@@ -32,4 +32,6 @@ export class PlayersComponent implements OnInit {
 
     public ngOnInit(): void {
     }
+
+    public deletePlayer(id: string): void {}
 }

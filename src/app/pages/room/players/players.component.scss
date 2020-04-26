@@ -1,44 +1,37 @@
+@import "../../../../styles/variables";
+
 .players {
   width: 100%;
   min-height: 400px;
 }
 
-.players-list {
-  list-style: none;
-  margin-top: 30px;
-  padding: 0;
-
-  &__item {
-    padding: 10px;
-    border: 1px solid;
-    margin-top: 5px;
-    margin-left: 0;
-    max-width: 300px;
-
-    &:first-child {
-      margin-top: 0;
-    }
-  }
-}
-
 .player {
   display: flex;
   align-items: center;
+  color: $steam-white;
+  border: 1px solid $steam-white;
+  border-radius: 5px;
+  margin-top: 10px;
+  max-width: 300px;
 
-  &__avatar > img {
-    border-radius: 50%;
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &__nickname {
+    font-size: 20px;
   }
 
   &__description {
+    display: flex;
+    flex-direction: column;
     margin-left: 10px;
-
-    & > h1 {
-      font-size: 20px;
-    }
   }
 }
 
 .games-count {
+  margin-top: 5px;
+
   &__number {
     margin-left: 5px;
   }

@@ -1,0 +1,15 @@
+@import "variables";
+
+.mat-form-field .mat-form-field-label,
+.mat-form-field.mat-focused .mat-form-field-label {
+  color: $steam-white !important;
+}
+
+.mat-form-field-outline {
+  color: $steam-white !important;
+  border-color: $steam-white !important;
+}
+
+.mat-input-element {
+  caret-color: $steam-white !important;
+}
