@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+
+import { GameModel } from './models/game.model';
 
 @Component({
     selector: 'steam-games',
@@ -6,12 +8,13 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
     styleUrls: ['./games.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class GamesComponent implements OnInit {
+export class GamesComponent {
+    @Input() public games: GameModel[];
+    @Output() public gameSelect = new EventEmitter<string>();
 
-    constructor() {
+    public readonly temporaryIcon = 'https://via.placeholder.com/70';
+
+    public handleSelectGame(id: string): void {
+        this.gameSelect.emit(id);
     }
-
-    ngOnInit(): void {
-    }
-
 }

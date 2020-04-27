@@ -1,24 +1,22 @@
+@import "../../../../styles/variables";
+
 .common-games {
   width: 100%;
   min-height: 400px;
 }
 
-.games {
-  list-style: none;
-  margin-top: 30px;
-  padding: 0;
-}
-
 .game {
   display: flex;
   max-width: 300px;
-  border: 1px solid;
   padding: 10px;
-  margin-top: 5px;
+  color: $steam-white;
+  border: 1px solid $steam-white;
+  border-radius: 5px;
+  margin-top: 10px;
 
   &:first-child {
     margin-top: 0;
-  };
+  }
 
   &__icon {
     width: 50px;

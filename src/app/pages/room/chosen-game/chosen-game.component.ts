@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+
+import { GameModel } from '../games/models/game.model';
 
 @Component({
     selector: 'chosen-game',
@@ -6,12 +8,8 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
     styleUrls: ['./chosen-game.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ChosenGameComponent implements OnInit {
+export class ChosenGameComponent {
+    @Input() public game: GameModel;
 
-    constructor() {
-    }
-
-    ngOnInit(): void {
-    }
-
+    public readonly temporaryIcon = 'https://via.placeholder.com/100';
 }

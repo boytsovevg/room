@@ -5,6 +5,8 @@ import { takeUntil } from 'rxjs/operators';
 import { PlayersDataService } from '../players-data.service';
 import { PlayerPreviewModel } from '../players/models/player-preview.model';
 import { PlayerModel } from '../players/models/player.model';
+import { GameModel } from '../games/models/game.model';
+import { GamesDataService } from '../games-data.service';
 
 @Component({
     selector: 'steam-room',
@@ -15,16 +17,27 @@ export class RoomComponent implements OnDestroy {
     public players: PlayerModel[];
     public searchedPlayers: PlayerPreviewModel[];
 
+    public games: GameModel[];
+    public chosenGame: GameModel;
+
     private destroy$ = new Subject<void>();
 
     constructor(
-        private playersDataService: PlayersDataService
+        private playersDataService: PlayersDataService,
+        private gamesDataService: GamesDataService
     ) {
         this.playersDataService.getPlayers().pipe(
             takeUntil(this.destroy$)
         ).subscribe(players => {
             this.players = players;
         });
+
+        this.gamesDataService.getGames().pipe(
+            takeUntil(this.destroy$)
+        )
+            .subscribe(games => {
+                this.games = games;
+            });
     }
 
     public ngOnDestroy(): void {
@@ -50,10 +63,20 @@ export class RoomComponent implements OnDestroy {
             takeUntil(this.destroy$),
         )
             .subscribe(searchedPlayer => {
+                const hasInList = this.players.find(p => p.id === player.id);
+
+                if (hasInList) {
+                    return;
+                }
+
                 this.players = [
                     ...this.players,
                     searchedPlayer
                 ];
             });
+    }
+
+    public selectGame(id: string): void {
+        this.chosenGame = this.games.find(g => g.id === id);
     }
 }

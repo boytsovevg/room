@@ -1,11 +1,18 @@
 <div class="room">
     <header class="room__header">
         <h1>Room name</h1>
-        <chosen-game></chosen-game>
+        <chosen-game *ngIf="chosenGame"
+            [game]="chosenGame"
+        >
+        </chosen-game>
     </header>
     <main class="room__content">
         <div class="room__element">
-            <steam-games></steam-games>
+            <steam-games
+                [games]="games"
+                (gameSelect)="selectGame($event)"
+            >
+            </steam-games>
         </div>
         <div class="room__element">
             <steam-players
