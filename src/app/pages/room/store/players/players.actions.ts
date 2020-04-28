@@ -22,6 +22,21 @@ export const searchPlayersSuccessAction = createAction(
     props<{ players: PlayerPreviewDto[] }>()
 );
 
+export const searchPlayerSelectAction = createAction(
+    '[players] searchPlayerSelectAction',
+    props<{ id: string }>()
+);
+
+export const loadPlayerDetailAction = createAction(
+    '[players] loadPlayerDetailAction',
+    props<{ id: string }>()
+);
+
+export const loadPlayerDetailSuccessAction = createAction(
+    '[players] loadPlayerDetailSuccessAction',
+    props<{ player: PlayerDto }>()
+);
+
 export const deletePlayerAction = createAction(
     '[players] deletePlayerAction',
     props<{ id: string }>()

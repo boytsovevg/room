@@ -4,7 +4,15 @@ import { exhaustMap, map } from 'rxjs/operators';
 
 import { PlayersDataService } from '../../players-data.service';
 
-import { loadPlayersAction, loadPlayersSuccessAction, searchPlayersAction, searchPlayersSuccessAction } from './players.actions';
+import {
+    loadPlayerDetailAction,
+    loadPlayerDetailSuccessAction,
+    loadPlayersAction,
+    loadPlayersSuccessAction,
+    searchPlayersAction,
+    searchPlayerSelectAction,
+    searchPlayersSuccessAction
+} from './players.actions';
 
 @Injectable()
 export class PlayersEffect {
@@ -12,7 +20,8 @@ export class PlayersEffect {
     constructor(
         private readonly actions$: Actions,
         private readonly playersDataService: PlayersDataService
-    ) { }
+    ) {
+    }
 
     public loadPlayers$ = createEffect(
         () => this.actions$.pipe(
@@ -30,4 +39,19 @@ export class PlayersEffect {
         )
     );
 
+
+    public searchPlayerSelect$ = createEffect(
+        () => this.actions$.pipe(
+            ofType(searchPlayerSelectAction),
+            map(props => loadPlayerDetailAction({ id: props.id }))
+        )
+    );
+
+    public loadPlayerDetail$ = createEffect(
+        () => this.actions$.pipe(
+            ofType(loadPlayerDetailAction),
+            exhaustMap(props => this.playersDataService.getPlayerDetail(props.id)),
+            map(player => loadPlayerDetailSuccessAction({ player }))
+        )
+    );
 }
