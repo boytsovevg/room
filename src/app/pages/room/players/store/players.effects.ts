@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { exhaustMap, map } from 'rxjs/operators';
 
-import { PlayersDataService } from '../../players-data.service';
+import { PlayersDataService } from '../players-data.service';
 
 import {
     loadPlayerDetailAction,
@@ -15,7 +15,7 @@ import {
 } from './players.actions';
 
 @Injectable()
-export class PlayersEffect {
+export class PlayersEffects {
 
     constructor(
         private readonly actions$: Actions,

@@ -15,14 +15,7 @@
             </steam-games>
         </div>
         <div class="room__element">
-            <steam-players
-                [players]="players"
-                [searchedPlayers]="searchedPlayers"
-                (playerSearchTextChange)="searchPlayers($event)"
-                (playerDelete)="deletePlayer($event)"
-                (searchedPlayerSelect)="handleSearchPlayerSelect($event)"
-            >
-            </steam-players>
+            <steam-players-container></steam-players-container>
         </div>
     </main>
 </div>

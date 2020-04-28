@@ -2,9 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { debounceTime, map } from 'rxjs/operators';
 
-import { PlayerPreviewDto } from './dto/player-preview.dto';
-import { PlayerDto } from './dto/player.dto';
-import { PlayerModel } from './players/models/player.model';
+import { PlayerPreviewDto } from '../dto/player-preview.dto';
+import { PlayerDto } from '../dto/player.dto';
 
 @Injectable()
 export class PlayersDataService {
@@ -100,7 +99,7 @@ export class PlayersDataService {
         );
     }
 
-    public getPlayerDetail(id: string): Observable<PlayerModel> {
+    public getPlayerDetail(id: string): Observable<PlayerDto> {
         return of(
             PlayersDataService.searchedPlayers.find(p => p.id === id)
         );

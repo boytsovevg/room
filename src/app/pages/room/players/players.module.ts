@@ -8,15 +8,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 
-import { ChosenGameComponent } from './chosen-game/chosen-game.component';
-import { GamesDataService } from './games-data.service';
-import { GamesComponent } from './games/games.component';
-import { PlayersModule } from './players/players.module';
-import { RoomComponent } from './room/room.component';
+import { PlayersComponent } from './components/players/players.component';
+import { PlayersContainerComponent } from './containers/players-container/players-container.component';
+import { PlayersDataService } from './players-data.service';
+import { PlayersStateModule } from './store/players-state.module';
 
 @NgModule({
     imports: [
         CommonModule,
+        PlayersStateModule,
         MatListModule,
         MatIconModule,
         MatAutocompleteModule,
@@ -24,19 +24,17 @@ import { RoomComponent } from './room/room.component';
         ReactiveFormsModule,
         MatInputModule,
         MatButtonModule,
-        PlayersModule
+        MatInputModule,
     ],
     declarations: [
-        RoomComponent,
-        GamesComponent,
-        ChosenGameComponent,
+        PlayersComponent,
+        PlayersContainerComponent
     ],
     providers: [
-        GamesDataService
+        PlayersDataService
     ],
     exports: [
-        RoomComponent
+        PlayersContainerComponent
     ]
 })
-export class RoomModule {
-}
+export class PlayersModule {}

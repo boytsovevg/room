@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,13 +14,15 @@ import { RoomModule } from './pages/room/room.module';
         AppRoutingModule,
         BrowserAnimationsModule,
         StoreModule.forRoot({}),
+        EffectsModule.forRoot(),
         RoomModule,
     ],
     declarations: [
         AppComponent
     ],
-    providers: [],
-    bootstrap: [AppComponent]
+    bootstrap: [
+        AppComponent
+    ]
 })
 export class AppModule {
 }
