@@ -3,7 +3,7 @@ import { createReducer, on } from '@ngrx/store';
 import { PlayerPreviewDto } from '../../dto/player-preview.dto';
 import { PlayerDto } from '../../dto/player.dto';
 
-import { loadPlayersSuccessAction, searchPlayersSuccessAction } from './players.actions';
+import { deletePlayerAction, loadPlayersSuccessAction, searchPlayersSuccessAction } from './players.actions';
 
 export interface PlayersState {
     players: PlayerDto[];
@@ -18,5 +18,9 @@ const initialState: PlayersState = {
 export const playersReducer = createReducer(
     initialState,
     on(loadPlayersSuccessAction, (state, props) => ({ ...state, players: props.players })),
-    on(searchPlayersSuccessAction, (state, props) => ({ ...state, searchedPlayers: props.players }))
+    on(searchPlayersSuccessAction, (state, props) => ({ ...state, searchedPlayers: props.players })),
+    on(deletePlayerAction, (state, props) => ({
+        ...state,
+        players: state.players.filter(p => p.id !== props.id)
+    }))
 );

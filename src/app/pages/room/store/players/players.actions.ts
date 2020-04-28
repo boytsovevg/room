@@ -9,7 +9,7 @@ export const loadPlayersAction = createAction(
 
 export const loadPlayersSuccessAction = createAction(
     '[players] loadPlayersSuccessAction',
-    props<{players: PlayerDto[]}>()
+    props<{ players: PlayerDto[] }>()
 );
 
 export const searchPlayersAction = createAction(
@@ -20,4 +20,9 @@ export const searchPlayersAction = createAction(
 export const searchPlayersSuccessAction = createAction(
     '[players] searchPlayersSuccessAction',
     props<{ players: PlayerPreviewDto[] }>()
+);
+
+export const deletePlayerAction = createAction(
+    '[players] deletePlayerAction',
+    props<{ id: string }>()
 );
