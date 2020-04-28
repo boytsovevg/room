@@ -14,6 +14,7 @@ import { GamesComponent } from './games/games.component';
 import { PlayersDataService } from './players-data.service';
 import { PlayersComponent } from './players/players.component';
 import { RoomComponent } from './room/room.component';
+import { PlayersStateModule } from './store/players/players-state.module';
 
 @NgModule({
     imports: [
@@ -24,7 +25,8 @@ import { RoomComponent } from './room/room.component';
         MatFormFieldModule,
         ReactiveFormsModule,
         MatInputModule,
-        MatButtonModule
+        MatButtonModule,
+        PlayersStateModule
     ],
     declarations: [
         RoomComponent,
