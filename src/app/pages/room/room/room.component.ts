@@ -2,7 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { GamesDataService } from '../games-data.service';
+import { GamesDataService } from '../games/games-data.service';
 import { GameModel } from '../games/models/game.model';
 
 @Component({

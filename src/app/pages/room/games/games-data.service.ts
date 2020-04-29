@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
-import { GameDto } from './dto/game.dto';
+import { GameDto } from '../dto/game.dto';
 
 @Injectable()
 export class GamesDataService {
@@ -30,6 +30,12 @@ export class GamesDataService {
     public getGames(): Observable<GameDto[]> {
         return of(
             GamesDataService.games
+        );
+    }
+
+    public getGameById(id: string): Observable<GameDto> {
+        return of(
+            GamesDataService.games.find(g => g.id === id)
         );
     }
 }

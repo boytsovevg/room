@@ -8,9 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 
-import { ChosenGameComponent } from './chosen-game/chosen-game.component';
-import { GamesDataService } from './games-data.service';
-import { GamesComponent } from './games/games.component';
+import { GamesModule } from './games/games.module';
 import { PlayersModule } from './players/players.module';
 import { RoomComponent } from './room/room.component';
 
@@ -24,15 +22,11 @@ import { RoomComponent } from './room/room.component';
         ReactiveFormsModule,
         MatInputModule,
         MatButtonModule,
-        PlayersModule
+        PlayersModule,
+        GamesModule
     ],
     declarations: [
         RoomComponent,
-        GamesComponent,
-        ChosenGameComponent,
-    ],
-    providers: [
-        GamesDataService
     ],
     exports: [
         RoomComponent

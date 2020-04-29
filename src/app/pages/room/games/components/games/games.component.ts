@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { GameModel } from './models/game.model';
+import { GameModel } from '../../models/game.model';
 
 @Component({
     selector: 'steam-games',
