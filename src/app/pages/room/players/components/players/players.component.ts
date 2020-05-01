@@ -11,8 +11,8 @@ import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 
-import { PlayerPreviewModel } from './models/player-preview.model';
-import { PlayerModel } from './models/player.model';
+import { PlayerPreviewModel } from '../../models/player-preview.model';
+import { PlayerModel } from '../../models/player.model';
 
 @Component({
     selector: 'steam-players',

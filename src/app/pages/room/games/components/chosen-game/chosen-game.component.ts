@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
-import { GameModel } from '../games/models/game.model';
+import { GameModel } from '../../models/game.model';
 
 @Component({
     selector: 'chosen-game',

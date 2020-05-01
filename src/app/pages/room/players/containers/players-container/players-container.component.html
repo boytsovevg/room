@@ -1,0 +1,8 @@
+<steam-players
+    [players]="players$ | async"
+    [searchedPlayers]="searchedPlayers$ | async"
+    (playerSearchTextChange)="searchPlayers($event)"
+    (playerDelete)="deletePlayer($event)"
+    (searchedPlayerSelect)="handleSearchPlayerSelect($event)"
+>
+</steam-players>
