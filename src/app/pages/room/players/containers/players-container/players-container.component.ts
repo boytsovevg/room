@@ -19,7 +19,7 @@ export class PlayersContainerComponent implements OnInit {
     public searchedPlayers$: Observable<PlayerPreviewModel[]>;
 
     constructor(
-        private store: Store<PlayersState>
+        private readonly store: Store<PlayersState>
     ) {
         this.players$ = this.store.pipe(
             select(selectPlayers)

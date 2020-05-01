@@ -10,7 +10,9 @@ export const playersFeatureName = 'players';
 @NgModule({
     imports: [
         StoreModule.forFeature<PlayersState>(playersFeatureName, playersReducer),
-        EffectsModule.forFeature([PlayersEffects])
+        EffectsModule.forFeature([
+            PlayersEffects
+        ])
     ]
 })
 export class PlayersStateModule {

@@ -32,22 +32,17 @@
             class="player"
         >
             <img
-                matListAvatar
+                mat-list-avatar
                 [src]="player.avatarUrl"
                 alt="avatar"
             >
-            <div matLine class="player__description">
-                <div class="player__nickname">{{player.nickname}}</div>
-                <div class="games-count">
-                    games: {{player.gamesCount}}
-                </div>
+            <div mat-line class="player__nickname">{{player.nickname}}</div>
+            <div mat-line class="games-count">
+                games: {{player.gamesCount}}
             </div>
-
-            <div matline>
-                <button mat-icon-button (click)="deletePlayer(player.id)">
-                    <mat-icon matListIcon>close</mat-icon>
-                </button>
-            </div>
+            <button mat-icon-button (click)="deletePlayer(player.id)">
+                <mat-icon>close</mat-icon>
+            </button>
         </mat-list-item>
     </mat-list>
 </div>
